@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ClothesControl</string>
+    <string name="permissions_required_dialog_title">Wymagane Uprawnienia</string>
+    <string name="permissions_required_message">Do korzystania z tej aplikacji wymagane są pewne uprawniena.</string>
+    <string name="grant_permissions">Nadaj uprawnienia</string>
+    <string name="cancel_permissions">Anuluj</string>
+    <string name="start_app_button">Rozpocznij</string>
+    <string name="close_app_button">Zamknij aplikację</string>
+    <string name="button_laundry_text">PRANIE</string>
+    <string name="button_complaint_text">REKLAMACJA</string>
+    <string name="clothing_scanned_successfully">Ubranie zostało zarejestrowane. Proszę, wrzuć ubranie do brudownika.</string>
+    <string name="clothing_not_scanned">Skanowanie ubrania zostało anulowane.</string>
+    <string name="settings">Ustawienia</string>
+    <string name="settings_saved">Ustawienia zapisano</string>
+    <string name="save">Zapisz</string>
+    <string name="host">Host</string>
+    <string name="device_auth_token">Token uwierzytelniający urządzenie</string>
+    <string name="enter_password">Wprowadź hasło</string>
+    <string name="ok">OK</string>
+    <string name="incorrect_password">Hasło nieprawidłowe</string>
+    <string name="cancel">Anuluj</string>
+</resources>
