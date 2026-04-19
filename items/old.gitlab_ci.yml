@@ -1,0 +1,26 @@
+# .gitlab-ci.yml
+
+# Define the Docker image to be used for running the CI/CD jobs
+image: docker:latest
+
+# Define stages of the pipeline
+stages:
+  - build
+  - test
+  - deploy
+
+# Define jobs
+build:
+  stage: build
+  script:
+    - docker-compose build
+
+test:
+  stage: test
+  script:
+    - docker-compose run --rm backend_django python manage.py test
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose up -d

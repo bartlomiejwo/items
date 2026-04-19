@@ -1,0 +1,101 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-02-29 13:54+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: items/settings_dev.py:130 items/settings_prod.py:125
+msgid "Polish"
+msgstr "Polski"
+
+#: items/settings_dev.py:131 items/settings_prod.py:126
+msgid "English"
+msgstr "Angielski"
+
+#: itemscan/models.py:11
+msgid "device"
+msgstr "urządzenie"
+
+#: itemscan/models.py:12
+msgid "devices"
+msgstr "urządzenia"
+
+#: itemscan/models.py:14 itemscan/views.py:62
+msgid "Location"
+msgstr "Lokalizacja"
+
+#: itemscan/models.py:15
+msgid "Token"
+msgstr "Token"
+
+#: itemscan/models.py:16 itemscan/models.py:34
+msgid "Active"
+msgstr "Aktywny"
+
+#: itemscan/models.py:30
+msgid "scan action"
+msgstr "akcja skanu"
+
+#: itemscan/models.py:31
+msgid "scan actions"
+msgstr "akcje skanu"
+
+#: itemscan/models.py:33
+msgid "Name"
+msgstr "Nazwa"
+
+#: itemscan/models.py:42
+msgid "item scan"
+msgstr "skan przedmiotu"
+
+#: itemscan/models.py:43
+msgid "item scans"
+msgstr "skany przedmiotu"
+
+#: itemscan/models.py:46 itemscan/views.py:62
+msgid "Code"
+msgstr "Kod"
+
+#: itemscan/models.py:47 itemscan/views.py:62
+msgid "Timestamp"
+msgstr "Znacznik czasu"
+
+#: itemscan/models.py:48
+msgid "Device"
+msgstr "Urządzenie"
+
+#: itemscan/models.py:49 itemscan/views.py:62
+msgid "Action"
+msgstr "Akcja"
+
+#: itemscan/serializers.py:42
+msgid "Device token is missing."
+msgstr "Brak tokenu urządzenia."
+
+#: itemscan/serializers.py:47
+msgid "Device not found."
+msgstr "Urządzenie nie zostało znalezione."
+
+#: itemscan/serializers.py:50
+msgid "Action name is missing."
+msgstr "Brak nazwy akcji."
+
+#: itemscan/serializers.py:55
+msgid "Action not found."
+msgstr "Akcja nie została znaleziona."

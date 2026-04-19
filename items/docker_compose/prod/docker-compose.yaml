@@ -1,0 +1,75 @@
+services:
+  items_backend:
+    build:
+      context: ../../backend
+      dockerfile: Dockerfile.prod
+    container_name: items_backend
+    restart: unless-stopped
+    environment:
+      DEBUG: ${DEBUG}
+      DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      CSRF_TRUSTED_ORIGINS: ${CSRF_TRUSTED_ORIGINS}
+      LDAP_GROUP_ADMINS: ${LDAP_GROUP_ADMINS}
+      LDAP_GROUP_ALLOWED: ${LDAP_GROUP_ALLOWED}
+      LDAP_GROUP_BANNED: ${LDAP_GROUP_BANNED}
+      AUTH_LDAP_SERVER_URI: ${AUTH_LDAP_SERVER_URI}
+      AUTH_LDAP_BIND_USER: ${AUTH_LDAP_BIND_USER}
+      AUTH_LDAP_BIND_PASSWORD: ${AUTH_LDAP_BIND_PASSWORD}
+      AUTH_LDAP_BIND_USER_OU: ${AUTH_LDAP_BIND_USER_OU}
+      AUTH_LDAP_COMPANY_OU: ${AUTH_LDAP_COMPANY_OU}
+      AUTH_LDAP_DOMAIN_COMPONENT_1: ${AUTH_LDAP_DOMAIN_COMPONENT_1}
+      AUTH_LDAP_DOMAIN_COMPONENT_2: ${AUTH_LDAP_DOMAIN_COMPONENT_2}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    ports: []
+    volumes:
+      - items_backend_static:/app/items/static
+    depends_on:
+      - postgres_items
+    networks:
+      - items_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 400M
+        reservations:
+          cpus: '0.2'
+          memory: 200M
+
+  postgres_items:
+    image: postgres
+    container_name: postgres_items
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports: []
+    volumes:
+      - items_postgres_data:/var/lib/postgresql/data
+    networks:
+      - items_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 200M
+        reservations:
+          cpus: '0.1'
+          memory: 100M
+
+volumes:
+  items_postgres_data:
+    external: true
+  items_backend_static:
+    external: true
+
+networks:
+  items_network:
+    external: true

@@ -1,0 +1,9 @@
+asgiref
+Django
+psycopg
+djangorestframework
+djangorestframework-simplejwt
+sqlparse
+django-auth-ldap
+django-environ
+django-cors-headers

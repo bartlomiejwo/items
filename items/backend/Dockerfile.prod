@@ -1,0 +1,25 @@
+FROM python:3.12-slim AS base
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    libldap2-dev \
+    libsasl2-dev \
+    libssl-dev \
+    libpq-dev \
+    gettext \
+    && apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+FROM base AS dependencies
+
+WORKDIR /app
+COPY ./requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir gunicorn
+
+FROM dependencies AS application
+
+WORKDIR /app
+COPY ./items ./items
+WORKDIR /app/items
+
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "items.wsgi:application"]

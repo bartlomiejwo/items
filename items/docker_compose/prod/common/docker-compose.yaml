@@ -1,0 +1,75 @@
+services:
+  pgadmin_common:
+    image: dpage/pgadmin4
+    container_name: pgadmin_common
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports: []
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - items_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
+        reservations:
+          cpus: '0.05'
+          memory: 50M
+
+  nginx_common:
+    image: nginx:latest
+    container_name: nginx_common
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      #- /var/apps/ssl/.pl.certificate.pem:/etc/nginx/nginx.crt:ro
+      #- /var/apps/ssl/.pl.key.txt:/etc/nginx/nginx.key:ro
+      - items_backend_static:/app/items/static:ro
+    networks:
+      - items_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.1'
+          memory: 100M
+        reservations:
+          cpus: '0.05'
+          memory: 30M
+  
+  portainer_common:
+    image: portainer/portainer
+    container_name: portainer_common
+    restart: unless-stopped
+    ports: []
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - items_network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 200M
+        reservations:
+          cpus: '0.05'
+          memory: 50M
+
+volumes:
+  pgadmin_data:
+    external: true
+  items_backend_static:
+    external: true
+  portainer_data:
+    external: true
+
+networks:
+  items_network:
+    external: true
